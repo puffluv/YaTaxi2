@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="Project_Work_WPF.Views.Login_Page_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:components="clr-namespace:Project_Work_WPF.Components"
+             xmlns:local="clr-namespace:Project_Work_WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+
+    <Grid Background="#ffdadada">
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Column="1" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="1.2*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Row="0" Source="/Resources/YaTaxi Logo.png" Height="85" HorizontalAlignment="Right" Grid.RowSpan="2" Margin="0,36,10,39" />
+                <Label Grid.Row="0" Content="YaTaxi" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Margin="46,48,0,0" Grid.RowSpan="2">
+                    <Label.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0" Color="Gray"/>
+                            <GradientStop Offset="1" Color="Orange"/>
+                        </LinearGradientBrush>
+                    </Label.Foreground>
+                </Label>
+
+
+                <TextBox Name="Username_TextBox" Grid.Row="2" materialDesign:HintAssist.Hint="Username" 
+                         Margin="0 ,0,0 0" FontSize="20" Text="{Binding Username}"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         HorizontalAlignment="Center" Width="150"/>
+
+                <components:BindablePasswordBox Grid.Row="3" materialDesign:HintAssist.Hint="Password"         
+                             Margin="0 ,0,0 0" FontSize="20" 
+                             Password="{Binding Password}" x:Name="Password_Box"
+                             HorizontalAlignment="Center" Width="150"  Visibility="{Binding password_box_visibility}"/>
+
+                <TextBox  Grid.Row="3" materialDesign:HintAssist.Hint="Password" 
+                          Margin="0 ,0,0 0" FontSize="20" 
+                          Foreground="Gray"
+                          Text= "{Binding Password}" Name ="Password_2Box"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                          HorizontalAlignment="Center" Width="150" Visibility="{Binding password_box_visibility_2}" TextChanged="Password_2Box_TextChanged" >
+                </TextBox>
+
+                <Grid Grid.Row="4" Margin="0, 10, 0, 0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Button Grid.Row="3" Grid.Column="0"  Content="Sign In" 
+                                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                Background="Gray"
+                                Margin="20, 10, 0, 0" Command="{Binding GoTo_SignIn}" >
+                        </Button>
+
+                    </Grid>
+
+
+                    <Grid Grid.Column="1">
+                        <Button Grid.Row="3" Grid.Column="1"  Content="Sign Up" 
+                                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                Foreground="Gray"
+                                Margin="0, 10, 20, 0" Command="{Binding GoTo_Register}"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                />
+                    </Grid>
+
+                </Grid>
+
+                <!--Command="{Binding Hide_Command}"-->
+
+                <Button Grid.Row="3" Grid.Column="1" Width="30" Height="19" 
+                        HorizontalAlignment="Right" Margin="0, 10, 20, 0" Background="Transparent" BorderThickness="0"
+                        Command="{Binding Hide}">
+                    <Image Source ="/Resources/Hidden Icon.png" Margin="-15"></Image>
+                </Button>
+
+                <TextBlock Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 50, 0" FontSize="20"
+                            FontFamily="Baskerville Old Face">Admin</TextBlock>
+                <TextBlock Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="60, 0, 0, 0" FontSize="20"
+                           FontFamily="Baskerville Old Face">User</TextBlock>
+
+                <ToggleButton Grid.Row="5"  Name="Toggle" Checked="Toggle_Checked" Unchecked="Toggle_UnChecked"/>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

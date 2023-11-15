@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="Project_Work_WPF.Views.User_Page_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:map="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:local="clr-namespace:Project_Work_WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="900">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2.3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.6*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="#ffdadada">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"></RowDefinition>
+                    <RowDefinition Height="1.5*"></RowDefinition>
+                    <RowDefinition Height="1.5*"></RowDefinition>
+                    <RowDefinition Height="1.5*"></RowDefinition>
+                    <RowDefinition Height="0.6*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="1" Content="YaTaxi" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="23" Margin="0, -33, 0, 0">
+                    <Label.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0" Color="black"/>
+                            <GradientStop Offset="1" Color="Orange"/>
+                        </LinearGradientBrush>
+                    </Label.Foreground>
+                </Label>
+
+                <Grid Grid.Row="1">
+                    <TextBox  Name="From_Textbox" FontSize="18" Width="220" Height="55"     
+                                 HorizontalAlignment="Center"  Text="{Binding From}"   
+                                 Background="Transparent" GotFocus="From_Textbox_GotFocus"
+                                 VerticalAlignment="Center"  
+                                 FontFamily="SimSun" MouseDoubleClick="From_Textbox_GotFocus"
+                                  materialDesign:HintAssist.Hint="From" 
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    </TextBox>
+
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <TextBox Name ="To_Textbox" Width="220" Height="55" 
+                                 Background="Transparent" GotFocus="To_Textbox_GotFocus"
+                                 FontSize="18" HorizontalAlignment="Center" Text="{Binding To,              
+                                 UpdateSourceTrigger=PropertyChanged}"
+                                 VerticalAlignment="Center"  
+                                  FontFamily="SimSun" MouseDoubleClick="To_Textbox_GotFocus"
+                                  materialDesign:HintAssist.Hint="To" 
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    </TextBox>
+
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <TextBox Name ="Price_Textbox" Width="220" Height="55" 
+                                 Background="Transparent" 
+                                 FontSize="18" HorizontalAlignment="Center" Text="{Binding Price}"
+                                 VerticalAlignment="Center"   
+                                       materialDesign:HintAssist.Hint="Price" 
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    </TextBox>
+
+                </Grid>
+
+                <CheckBox Grid.Row="4" Content="Get Local " VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="15"
+                          IsChecked="{Binding GetWithDoubleClick}"></CheckBox>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="#ffdadada">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Height="30" Width="120" Command="{Binding Rotate_Command}" BorderBrush="black" BorderThickness="1.5" Background="White"
+                        Foreground="Gray" Style="{StaticResource MaterialDesignFlatLightButton}">
+                    Rotate
+                </Button>
+
+                <Button Grid.Row="1" Height="30" Width="120" Command="{Binding Get_Taxi_Command}" Background="White" BorderBrush="Black" BorderThickness="1.5"
+                         Foreground="Black" Style="{StaticResource MaterialDesignFlatLightButton}">
+                    <TextBlock>
+                        <Run Foreground="Gray">Get</Run>
+                        <Run Foreground="Orange">Taxi</Run>
+                    </TextBlock>
+                </Button>
+
+                <Button Grid.Row="3" Height="35" Width="150" FontSize="18" Command="{Binding History_Command}"  Style="{StaticResource MaterialDesignIconForegroundButton}"
+                          Foreground="Gray" Margin="0, 0, 0, 4">History
+                </Button>
+                
+                <Button Grid.Row="4" Height="35" Width="150" FontSize="18" Command="{Binding Log_Out}" Style="{StaticResource MaterialDesignIconButton}"
+                        Margin="0, 0, 0, 4">Log Out</Button>
+            </Grid>
+
+        </Grid>
+
+        <!--CredentialsProvider="{Binding Provider}"-->
+
+        <Grid Grid.Column="1">
+            <map:Map Name="m"   CredentialsProvider="{Binding Provider}"
+                     ZoomLevel="{Binding zoomlevel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Center="{Binding center, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" MouseDoubleClick="Map_MouseDoubleClick">
+                <map:MapItemsControl ItemsSource="{Binding Route}">
+
+                </map:MapItemsControl>
+
+                <map:Pushpin Name="From_Pushpin" Visibility="{Binding From_Pushpin_Visibility}" 
+                             Location="{Binding From_Pushpin_Location}"></map:Pushpin>
+
+                <map:Pushpin Name="To_Pushpin" Visibility="{Binding To_Pushpin_Visibility}"  
+                             Location="{Binding To_Pushpin_Location}"></map:Pushpin>
+
+
+            </map:Map>
+        </Grid>
+
+    </Grid>
+
+</UserControl>

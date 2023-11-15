@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Project_Work_WPF.Views.History_Page_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:test ="clr-namespace:Project_Work_WPF.ViewModels"
+             xmlns:local="clr-namespace:Project_Work_WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="900">
+
+    <Grid Background="White">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="18*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Button Height="50" VerticalAlignment="Bottom" Background="Transparent" BorderThickness="0"
+                Command="{Binding Log_Out}">
+            <Image Source="/Resources/Back Icon.png"></Image>
+        </Button>
+        
+        <Grid Grid.Column ="1">
+            <ListView x:Name="AA" ItemsSource="{Binding Departures}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Date" Width="140" DisplayMemberBinding="{Binding Date, StringFormat=d}"></GridViewColumn>
+                        <GridViewColumn Header="Start Time" Width="110" DisplayMemberBinding="{Binding StartTime, StringFormat=t}"></GridViewColumn>
+                        <GridViewColumn Header="Finish Time" Width="110" DisplayMemberBinding="{Binding EndTime, StringFormat=t}"></GridViewColumn>
+                        <GridViewColumn Header="Duration" Width="110" DisplayMemberBinding="{Binding Duration, StringFormat=t}"></GridViewColumn>
+                        <GridViewColumn Header="Distance" Width="105" DisplayMemberBinding="{Binding Distance}"></GridViewColumn>
+                        <GridViewColumn Header="Cost" Width="60" DisplayMemberBinding="{Binding Cost}"></GridViewColumn>
+                        <GridViewColumn Header="Driver Name" Width="130" DisplayMemberBinding="{Binding driver.Name}"></GridViewColumn>
+                        <GridViewColumn Header="Driver CarNumber" Width="130" DisplayMemberBinding="{Binding driver.CarNumber}"></GridViewColumn>
+                        <GridViewColumn Header="Driver Point" Width="130" DisplayMemberBinding="{Binding driver.Point}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+   
+</UserControl>

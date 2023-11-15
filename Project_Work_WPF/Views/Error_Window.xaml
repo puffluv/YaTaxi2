@@ -1,0 +1,22 @@
+﻿<Window x:Class="Project_Work_WPF.Views.Error_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Work_WPF.Views" 
+        xmlns:wpfanimated="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Height="150" Width="170" WindowStyle="ToolWindow" >
+
+ 
+
+    <Grid>
+        <Grid>
+            <Image wpfanimated:ImageBehavior.AnimatedSource= "pack://application:,,,/Resources/error-img.gif"
+               wpfanimated:ImageBehavior.RepeatBehavior="3"
+               wpfanimated:ImageBehavior.AnimateInDesignMode="False"
+               wpfanimated:ImageBehavior.AutoStart="True" Height="130"/>
+
+        </Grid>
+    </Grid>
+</Window>
